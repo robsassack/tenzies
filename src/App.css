@@ -39,6 +39,11 @@ main {
   max-width: 500px;
 }
 
+.stats {
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
 .dice-container {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
