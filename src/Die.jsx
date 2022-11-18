@@ -1,5 +1,16 @@
 function Die(props) {
-  return <div className='die'>{props.value}</div>;
+  const styles = {
+    backgroundColor: props.die.isHeld ? "#59E391" : "white",
+  };
+  return (
+    <div
+      className='die'
+      style={styles}
+      onClick={props.holdDice}
+    >
+      {props.die.value}
+    </div>
+  );
 }
 
 export default Die;
