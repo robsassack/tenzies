@@ -47,19 +47,32 @@ main {
 }
 
 .die {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: #2B283A;
+  display: grid;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-template-areas:
+  "a . c"
+  "e g f"
+  "d . b";
+  padding: 7px;
   text-align: center;
+  color: #2B283A;
   height: 70px;
   width: 70px;
   border-radius: 10px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
   font-weight: 700;
-  font-size: 2.75em;
   user-select: none;
   cursor: pointer;
+}
+
+.pip {
+  display: block;
+  align-self: center;
+  justify-self: center;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background-color: black;
 }
 
 @media (max-width: 600px) {
@@ -83,6 +96,11 @@ main {
   .die {
     width: 55px;
     height: 55px;
+  }
+
+  .pip {
+    height: 10px;
+    width: 10px;
   }
 }
 
