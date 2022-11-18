@@ -18,7 +18,8 @@ function App() {
 
   function generateNewDie() {
     return {
-      value: Math.floor(Math.random() * 6) + 1,
+      // value: Math.floor(Math.random() * 6) + 1,
+      value: 5,
       isHeld: false,
       id: nanoid(),
     };
