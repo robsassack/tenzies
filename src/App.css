@@ -41,9 +41,10 @@ main {
 
 .stats {
   display: flex;
-  gap: 30px;
+  gap: 20px;
   font-size: 1.2em;
   margin-top: 5px;
+  text-align: center;
 }
 
 .dice-container {
