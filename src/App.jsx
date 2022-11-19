@@ -5,18 +5,28 @@ import Confetti from "react-confetti";
 import "./App.css";
 
 function App() {
+  const localBestTime = localStorage.getItem("bestTime");
   const [dice, setDice] = React.useState(allNewDice());
   const [tenzies, setTenzies] = React.useState(false);
   const [game, setGame] = React.useState(false);
   const [rolls, setRolls] = React.useState(0);
   const [time, setTime] = React.useState(0);
+  const [bestTime, setBestTime] = React.useState(
+    (localBestTime && parseInt(localBestTime)) || ''
+  );
 
+  // check for game end
   React.useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
     const allSame = dice.every((die) => die.value === dice[0].value);
     if (allHeld && allSame) {
       setTenzies(true);
       setGame(false);
+      // set new best time
+      if (bestTime === '' || time < bestTime) {
+        localStorage.setItem("bestTime", time);
+        setBestTime(time);
+      }
     }
   }, [dice]);
 
@@ -76,6 +86,12 @@ function App() {
     );
   }
 
+  function timeFormat(time) {
+    let seconds = Math.floor(time / 10);
+    let milliseconds = time % 10;
+    return `${seconds}.${milliseconds}`;
+  }
+
   const diceElements = dice.map((die) => (
     <Die key={die.id} die={die} holdDice={() => holdDice(die.id)} />
   ));
@@ -90,7 +106,8 @@ function App() {
       </p>
       <div className='stats'>
         <p>Rolls: {rolls}</p>
-        <p>Time: {time}</p>
+        <p>Time: {timeFormat(time)}s</p>
+        {bestTime && <p>Best Time: {timeFormat(bestTime)}s</p>}
       </div>
       <div className='dice-container'>{diceElements}</div>
       <button className='roll-button' onClick={rollDice}>
