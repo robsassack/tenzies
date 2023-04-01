@@ -12,8 +12,24 @@ function App() {
   const [rolls, setRolls] = React.useState(0);
   const [time, setTime] = React.useState(0);
   const [bestTime, setBestTime] = React.useState(
-    (localBestTime && parseInt(localBestTime)) || ''
+    (localBestTime && parseInt(localBestTime)) || ""
   );
+  const [confettiProps, setConfettiProps] = React.useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  // handle window resize for confetti
+  React.useEffect(() => {
+    function handleResize() {
+      setConfettiProps({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // check for game end
   React.useEffect(() => {
@@ -23,7 +39,7 @@ function App() {
       setTenzies(true);
       setGame(false);
       // set new best time
-      if (bestTime === '' || time < bestTime) {
+      if (bestTime === "" || time < bestTime) {
         localStorage.setItem("bestTime", time);
         setBestTime(time);
       }
@@ -98,7 +114,7 @@ function App() {
 
   return (
     <main>
-      {tenzies && <Confetti />}
+      {tenzies && <Confetti {...confettiProps} />}
       <h1 className='title'>Tenzies</h1>
       <p className='instructions'>
         Roll until all dice are the same. Click each die to freeze it at its
