@@ -114,7 +114,7 @@ function App() {
 
   return (
     <main>
-      {tenzies && <Confetti {...confettiProps} />}
+      {tenzies && <Confetti {...confettiProps} style={{ position: "fixed" }} />}
       <h1 className='title'>Tenzies</h1>
       <p className='instructions'>
         Roll until all dice are the same. Click each die to freeze it at its
