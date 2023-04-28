@@ -15,6 +15,12 @@ html, body {
   justify-content: center;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 main {
   display: flex;
   flex-direction: column;
@@ -131,4 +137,14 @@ main {
 
 .roll-button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+.repo-link {
+  color: white;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.repo-link:hover {
+  color: #d3d3d3;
 }

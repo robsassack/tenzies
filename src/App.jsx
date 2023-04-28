@@ -113,23 +113,30 @@ function App() {
   ));
 
   return (
-    <main>
-      {tenzies && <Confetti {...confettiProps} style={{ position: "fixed" }} />}
-      <h1 className='title'>Tenzies</h1>
-      <p className='instructions'>
-        Roll until all dice are the same. Click each die to freeze it at its
-        current value between rolls.
-      </p>
-      <div className='stats'>
-        <p>Rolls: {rolls}</p>
-        <p>Time: {timeFormat(time)}s</p>
-        {bestTime && <p>Best Time: {timeFormat(bestTime)}s</p>}
-      </div>
-      <div className='dice-container'>{diceElements}</div>
-      <button className='roll-button' onClick={rollDice}>
-        {tenzies ? "Play Again" : "Roll"}
-      </button>
-    </main>
+    <div className="page">
+      <main>
+        {tenzies && (
+          <Confetti {...confettiProps} style={{ position: "fixed" }} />
+        )}
+        <h1 className='title'>Tenzies</h1>
+        <p className='instructions'>
+          Roll until all dice are the same. Click each die to freeze it at its
+          current value between rolls.
+        </p>
+        <div className='stats'>
+          <p>Rolls: {rolls}</p>
+          <p>Time: {timeFormat(time)}s</p>
+          {bestTime && <p>Best Time: {timeFormat(bestTime)}s</p>}
+        </div>
+        <div className='dice-container'>{diceElements}</div>
+        <button className='roll-button' onClick={rollDice}>
+          {tenzies ? "Play Again" : "Roll"}
+        </button>
+      </main>
+      <a href='https://github.com/robsassack/tenzies'>
+        <i class='fa-brands fa-github repo-link'></i>
+      </a>
+    </div>
   );
 }
 
